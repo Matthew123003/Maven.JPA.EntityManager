@@ -8,20 +8,23 @@ public class Artist {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "ID")
     private Integer id;
-    private String artist;
+    @Column(name = "Name")
+    private String name;
+    @Column(name = "Num_Of_Members")
     private Integer num_Of_Members;
 
     public Artist(){}
 
-    public Artist(String artist, Integer numOfMembers){
-        this.artist = artist;
+    public Artist(String name, Integer numOfMembers){
+        this.name = name;
         this.num_Of_Members = numOfMembers;
     }
 
-    public Artist(Integer id, String artist, Integer numOfMembers){
+    public Artist(Integer id, String name, Integer numOfMembers){
         this.id = id;
-        this.artist = artist;
+        this.name = name;
         this.num_Of_Members = numOfMembers;
     }
 
@@ -33,12 +36,12 @@ public class Artist {
         this.id = id;
     }
 
-    public String getArtist() {
-        return artist;
+    public String getName() {
+        return name;
     }
 
-    public void setArtist(String artist) {
-        this.artist = artist;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public Integer getNum_Of_Members() {
