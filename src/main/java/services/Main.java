@@ -1,11 +1,40 @@
 package services;
 
+import com.mysql.jdbc.Driver;
 import entities.Artist;
 import entities.Songs;
 
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 public class Main {
+    public static final String dbUrl = "jdbc:mysql://localhost:3306/MUSIC";
+    public static final String username = "matt";
+    public static final String password = "zipcode0";
+    static Logger demoLog = Logger.getLogger("JDBC");
+
+
+    public static java.sql.Connection getConnection() {
+        try {
+            DriverManager.registerDriver(new Driver());
+            return DriverManager.getConnection(dbUrl, username, password);
+        } catch (SQLException ex) {
+            throw new RuntimeException("Error connecting to the database", ex);
+        }
+    }
 
     public static void main(String[] args) {
+        demoLog.log(Level.INFO, "somestuff");
+        System.out.println("-------- MySQL JDBC Connection Demo ------------");
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+        } catch (ClassNotFoundException e) {
+            System.out.println("MySQL JDBC Driver not found !!");
+            return;
+        }
+        System.out.println("MySQL JDBC Driver Registered!");
         // Instantiate the service classes
         SongsService songsService = new SongsService();
         ArtistService artistService = new ArtistService();
@@ -14,7 +43,11 @@ public class Main {
         Songs newSong = new Songs("Song Title", "Genre", 2024, "Artist Name");
         Artist newArtist = new Artist("Artist Name", 8);
 
+        java.sql.Connection conn = null;
         try {
+            conn = DriverManager.getConnection(dbUrl, username, password);
+            System.out.println("Connection Established to MYSQL Database");
+
             // Test the create method
             songsService.createSong(newSong);
             artistService.createArtist(newArtist);
@@ -29,5 +62,20 @@ public class Main {
 
             // Test the delete method
             songsService.deleteSong(foundSong.getId());
+        } catch (SQLException e) {
+            System.err.println(e.getMessage());
+            System.out.println("Connection Failed! Check output console");
+
+        } finally {
+            try {
+                if (conn != null)
+                    conn.close();
+                System.out.println("Connection closed !!");
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+
+        }
     }
 }
+
