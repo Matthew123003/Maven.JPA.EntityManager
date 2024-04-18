@@ -29,7 +29,7 @@ public class ArtistService{
         }
     }
     @Transactional
-    public boolean deleteArtist(Artist id){
+    public boolean deleteArtist(Integer id){
         // Begin a transaction
         entityManager.getTransaction().begin();
         try {

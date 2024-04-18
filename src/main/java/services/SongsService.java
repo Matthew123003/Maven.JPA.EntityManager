@@ -28,7 +28,7 @@ public class SongsService{
         }
     }
     @Transactional
-    public boolean deleteSong(Songs id){
+    public boolean deleteSong(Integer id){
         // Begin a transaction
         entityManager.getTransaction().begin();
         try {
