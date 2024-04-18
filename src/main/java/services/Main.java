@@ -3,7 +3,6 @@ package services;
 import com.mysql.jdbc.Driver;
 import entities.Artist;
 import entities.Songs;
-
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.logging.Level;
