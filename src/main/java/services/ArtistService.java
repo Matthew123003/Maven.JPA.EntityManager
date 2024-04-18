@@ -1,9 +1,10 @@
 package services;
 
 import entities.Artist;
-import entities.Songs;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
+import javax.transaction.Transactional;
+import java.util.List;
 
 
 public class ArtistService implements Services{
@@ -11,6 +12,7 @@ public class ArtistService implements Services{
     @PersistenceContext
     private EntityManager entityManager;
 
+    @Transactional
     public void createArtist(Artist artist) {
         // Begin a transaction
         entityManager.getTransaction().begin();
@@ -24,9 +26,22 @@ public class ArtistService implements Services{
             entityManager.getTransaction().rollback();
             // Optionally, handle the exception
             throw e;
+        }finally {
+            entityManager.close();
         }
     }
 
+    public boolean deleteArtist(){
+        return true;
+    }
+
+    public Artist updateArtist(){
+        return null;
+    }
+
+    public List findAll(){
+        return entityManager.createQuery("SELECT * FROM artist").getResultList();
+    }
 
     @Override
     public Integer findById() {
