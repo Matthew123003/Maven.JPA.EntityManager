@@ -1,4 +1,4 @@
-package entities;
+package PersistMain;
 
 
 import javax.persistence.*;
@@ -9,17 +9,14 @@ public class Songs {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "ID")
     private Integer id;
-    @Column(name = "Title")
+
     private String title;
-    @Column(name = "Genre")
+
     private String genre;
-    @Column(name = "Year")
+
     private Integer year;
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "artist_id")
-    @Column(name = "Artist")
+
     private String artist;
 
     public Songs(){

@@ -1,4 +1,4 @@
-package entities;
+package PersistMain;
 
 
 import javax.persistence.*;
@@ -9,11 +9,10 @@ public class Artist {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "ID")
     private Integer id;
-    @Column(name = "Name")
+
     private String name;
-    @Column(name = "Num_Of_Members")
+
     private Integer num_Of_Members;
 
     public Artist(){}

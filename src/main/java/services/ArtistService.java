@@ -1,9 +1,8 @@
 package services;
 
-import entities.Artist;
+import PersistMain.Artist;
 import org.springframework.stereotype.Service;
 import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
 import javax.persistence.PersistenceException;
 import javax.persistence.TypedQuery;
 import javax.transaction.Transactional;

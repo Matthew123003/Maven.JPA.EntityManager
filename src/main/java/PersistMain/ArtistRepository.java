@@ -1,6 +1,5 @@
-package Repository;
+package PersistMain;
 
-import entities.Artist;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
