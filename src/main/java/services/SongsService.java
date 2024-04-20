@@ -1,8 +1,6 @@
 package services;
 
 import entities.Songs;
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.PersistenceContext;
 import javax.transaction.Transactional;
 import java.util.List;
 

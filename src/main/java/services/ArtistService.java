@@ -1,9 +1,6 @@
 package services;
 
 import entities.Artist;
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.PersistenceContext;
-import jakarta.persistence.PersistenceException;
 import javax.transaction.Transactional;
 import java.util.List;
 
