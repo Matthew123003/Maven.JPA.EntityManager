@@ -1,6 +1,7 @@
 package entities;
 
 
+import javax.persistence.*;
 
 @Entity
 @Table(name = "Artist")
@@ -50,5 +51,10 @@ public class Artist {
 
     public void setNum_Of_Members(Integer num_Of_Members) {
         this.num_Of_Members = num_Of_Members;
+    }
+
+    @Override
+    public String toString() {
+        return "Artist [ID =" + id + ", Name =" + name + ", Number Of Members =" + num_Of_Members + "]";
     }
 }

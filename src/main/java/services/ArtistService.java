@@ -1,10 +1,15 @@
 package services;
 
 import entities.Artist;
+import org.springframework.stereotype.Service;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.persistence.PersistenceException;
+import javax.persistence.TypedQuery;
 import javax.transaction.Transactional;
 import java.util.List;
 
-
+@Service
 public class ArtistService{
 
     @PersistenceContext
@@ -75,7 +80,10 @@ public class ArtistService{
 
     public List<Artist> findAll(){
         try {
-            return entityManager.createQuery("SELECT * FROM artist", Artist.class).getResultList();
+            //return entityManager.createQuery("SELECT * FROM artist", Artist.class).getResultList();
+            String jpql = "SELECT * FROM Artist";
+            TypedQuery<Artist> query = entityManager.createQuery(jpql, Artist.class);
+            return query.getResultList();
         }catch(PersistenceException e){
             e.printStackTrace();
         }

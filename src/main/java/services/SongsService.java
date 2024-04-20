@@ -1,10 +1,14 @@
 package services;
 
 import entities.Songs;
+import org.springframework.stereotype.Service;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
 import javax.transaction.Transactional;
 import java.util.List;
 
-
+@Service
 public class SongsService{
 
     @PersistenceContext
@@ -76,7 +80,10 @@ public class SongsService{
     @Transactional
     public List<Songs> findAll(){
         try {
-            return entityManager.createQuery("SELECT * FROM songs", Songs.class).getResultList();
+            //return entityManager.createQuery("SELECT * FROM songs", Songs.class).getResultList();
+            String jpql = "SELECT * FROM Artist";
+            TypedQuery<Songs> query = entityManager.createQuery(jpql, Songs.class);
+            return query.getResultList();
         }catch(Exception e){
             e.printStackTrace();
         }

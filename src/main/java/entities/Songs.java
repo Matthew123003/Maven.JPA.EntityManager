@@ -1,6 +1,7 @@
 package entities;
 
 
+import javax.persistence.*;
 
 @Entity
 @Table(name = "Songs")
@@ -78,5 +79,11 @@ public class Songs {
 
     public void setArtist(String artist) {
         this.artist = artist;
+    }
+
+    @Override
+    public String toString() {
+        return "Song [id=" + id + ", Title =" + title + ", Genre =" + genre
+                + ", Year =" + year + ", Artist =" + artist + "]";
     }
 }
