@@ -1,13 +1,14 @@
 package services;
 
-import com.mysql.jdbc.Driver;
 import entities.Artist;
 import entities.Songs;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
+@SpringBootApplication
 public class Main {
     public static final String dbUrl = "jdbc:mysql://localhost:3306/MUSIC";
     public static final String username = "matt";
@@ -15,17 +16,9 @@ public class Main {
     static Logger demoLog = Logger.getLogger("JDBC");
 
 
-    public static java.sql.Connection getConnection() {
-        try {
-            DriverManager.registerDriver(new Driver());
-            return DriverManager.getConnection(dbUrl, username, password);
-        } catch (SQLException ex) {
-            throw new RuntimeException("Error connecting to the database", ex);
-        }
-    }
-
     public static void main(String[] args) {
-        demoLog.log(Level.INFO, "somestuff");
+        SpringApplication.run(Main.class, args);
+        demoLog.log(Level.INFO, "Matt's MySQL Persistence");
         System.out.println("-------- MySQL JDBC Connection Demo ------------");
         try {
             Class.forName("com.mysql.jdbc.Driver");
