@@ -9,7 +9,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class Main implements CommandLineRunner {
 
     @Autowired
-    private ArtistRepository repo;
+    private ArtistRepository repoArtist;
+    @Autowired
+    private SongsRepository repoSongs;
 
     public static void main(String[] args) {
         SpringApplication.run(Main.class, args);
@@ -17,17 +19,19 @@ public class Main implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        createArtist();
+        createSong();
 
     }
 
-    private void createArtist() {
-        Artist newArtist = new Artist();
+    private void createSong() {
+        Songs newSong = new Songs();
 
-        newArtist.setName("Black Keys");
-        newArtist.setNum_Of_Members(2);
+        newSong.setTitle("Weight Of Love");
+        newSong.setGenre("Alt");
+        newSong.setYear(2018);
+        newSong.setArtist("Black Keys");
 
-        repo.save(newArtist);
+        repoSongs.save(newSong);
     }
 }
 
