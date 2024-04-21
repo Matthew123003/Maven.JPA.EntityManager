@@ -1,3 +1,32 @@
 SPRINGBOOT JPA PERSISTENCE NOTES
 
 https://www.codejava.net/frameworks/spring-boot/spring-data-jpa-entitymanager-examples
+
+This code represents a typical Spring Boot application with JPA (Java Persistence API) integration.
+
+@SpringBootApplication: This annotation marks the class as a Spring Boot application class. It
+ enables auto-configuration and component scanning. It combines @Configuration,
+ @EnableAutoConfiguration, and @ComponentScan annotations into a single annotation.
+public static void main(String[] args): This is the entry point of the application.
+It creates an instance of the SpringApplication class and starts the Spring application.
+ The SpringApplication.run() method takes two arguments: the main class (PersistMain.class)
+  and the command-line arguments (args).
+@Bean: This annotation is used to declare a bean in the Spring application context. In this
+ case, it declares a bean of type CommandLineRunner. CommandLineRunner is a functional
+ interface provided by Spring Boot, which allows you to execute code after the Spring
+ application context has been loaded and just before the application starts running.
+runner(ArtistRepo repo): This method defines the implementation of the CommandLineRunner
+interface. It receives an instance of ArtistRepo (presumably a repository interface for
+managing Artist entities) as a parameter. The method body contains the code that will be
+executed when the application starts.
+List<Artist> allArtists = (List<Artist>) repo.findAll();: This line retrieves all Artist
+entities from the database using the findAll() method provided by the ArtistRepo interface.
+ This assumes that ArtistRepo extends Spring Data JPA's CrudRepository, which provides various
+  methods for CRUD (Create, Read, Update, Delete) operations.
+for (Artist artist : allArtists) { System.out.println(artist.getName()); }: This loop iterates
+ over the list of Artist entities retrieved from the database and prints the name of each artist
+  to the console. It demonstrates how to access and process data retrieved from the database
+  using Spring Data JPA.
+Overall, this code sets up a Spring Boot application, retrieves data from the database using
+Spring Data JPA, and prints it to the console. The CommandLineRunner bean ensures that the code
+ inside its run() method is executed when the Spring application starts up.
