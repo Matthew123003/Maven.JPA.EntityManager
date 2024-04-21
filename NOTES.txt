@@ -1,2 +1,3 @@
 SPRINGBOOT JPA PERSISTENCE NOTES
 
+https://www.codejava.net/frameworks/spring-boot/spring-data-jpa-entitymanager-examples
