@@ -1,5 +1,6 @@
-package PersistMain;
+package services;
 
+import PersistMain.Songs;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -9,7 +10,7 @@ import javax.transaction.Transactional;
 import java.util.List;
 
 @Repository
-public class SongsRepository {
+public class SongsRepository {//must go in package PersistMain to work
 
     @Autowired
     private EntityManager entityManager;
